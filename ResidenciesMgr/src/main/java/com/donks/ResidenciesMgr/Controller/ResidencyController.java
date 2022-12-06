@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -27,11 +28,11 @@ public class ResidencyController {
 
     @GetMapping(value = "/{residencyId}")
     public ResponseEntity<Residency> findOne(@PathVariable("residencyId")UUID residencyId){
-        Residency residency = residencyService.findById(residencyId);
+        Optional<Residency> residency = Optional.of(residencyService.findById(residencyId));
 
-        return residency.equals(null) ?
+        return residency.isEmpty()?
                 ResponseEntity.notFound().build() :
-                ResponseEntity.ok(residency);
+                ResponseEntity.ok(residency.get());
     }
 
     @GetMapping(value ="/byUser/{userId}")
