@@ -36,5 +36,6 @@ public class Residency {
     @Column(name="extra_comment")
     private String comment;
 
+    @Column(columnDefinition = "uuid")
     private UUID userId;
 }

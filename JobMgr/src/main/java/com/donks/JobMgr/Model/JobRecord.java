@@ -30,6 +30,7 @@ public class JobRecord {
     @Column(name="end_date")
     private LocalDateTime end;
 
-    private UUID userId;
+    @Column(columnDefinition = "uuid")
+    private UUID userid;
 
 }
