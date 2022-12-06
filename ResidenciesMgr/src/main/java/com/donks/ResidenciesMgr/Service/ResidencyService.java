@@ -1,0 +1,53 @@
+package com.donks.ResidenciesMgr.Service;
+
+import com.donks.ResidenciesMgr.Model.Residency;
+import com.donks.ResidenciesMgr.Repository.ResidencyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+@Service
+public class ResidencyService {
+
+    @Autowired
+    private final ResidencyRepository residencyRepository;
+
+    public ResidencyService(ResidencyRepository residencyRepository) {
+        this.residencyRepository = residencyRepository;
+    }
+
+    public List<Residency> findAll(){
+        return residencyRepository.findAll();
+    }
+
+    public Residency addOne(Residency residency){
+        return residencyRepository.save(residency);
+    }
+
+    public Residency findById(UUID id){
+        return residencyRepository.findById(id).orElse(null);
+    }
+
+    public Residency updateOne(Residency residency){
+        Optional<Residency> r = residencyRepository.findById(residency.getId());
+
+        if(r.isEmpty()) return null;
+
+        return residencyRepository.save(residency);
+    }
+
+    public Boolean deleteOne(UUID id){
+        residencyRepository.deleteById(id);
+        return residencyRepository.findById(id).isEmpty();
+    }
+
+    public List<Residency> findByUserId(UUID userId){
+        List<Residency> residencies = residencyRepository.findByUserId(userId);
+        return residencies;
+    }
+
+
+}
