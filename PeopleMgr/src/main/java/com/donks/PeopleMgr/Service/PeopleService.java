@@ -12,7 +12,11 @@ import java.util.UUID;
 public class PeopleService {
 
     @Autowired
-    PeopleRepository peopleRepository;
+    private final PeopleRepository peopleRepository;
+
+    public PeopleService(PeopleRepository peopleRepository) {
+        this.peopleRepository = peopleRepository;
+    }
 
     public People save(People people){
         return peopleRepository.save(people);
