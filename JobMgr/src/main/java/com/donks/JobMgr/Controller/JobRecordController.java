@@ -28,19 +28,19 @@ public class JobRecordController {
         return ResponseEntity.ok(jobRecordService.findAll());
     }
 
-    @GetMapping("/{jobId}")
+    @GetMapping(value = "/{jobId}")
     public ResponseEntity<JobRecord> findById(@PathVariable("jobId")UUID jobId){
         return ResponseEntity.ok(jobRecordService.findById(jobId));
     }
 
     @GetMapping(value = "/byuser/{userId}")
-    public ResponseEntity<List<JobRecord>> findByUser(@PathVariable("userId") UUID userId){
+    public ResponseEntity<List<JobRecord>> findByUser(@PathVariable UUID userId){
         return ResponseEntity.ok(jobRecordService.findByUserId(userId));
     }
 
-    @DeleteMapping(value="/{jobId}")
+    @DeleteMapping(value = "/{jobId}")
     public ResponseEntity<Boolean> deleteOne(@PathVariable("jobId")UUID jobId){
-        if(jobRecordService.findById(jobId).equals(null))
+        if(jobRecordService.findById(jobId)== null)
             return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok(jobRecordService.deleteOne(jobId));
