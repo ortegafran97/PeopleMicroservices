@@ -1,3 +1,19 @@
 spring:
   application:
     name: people-service
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  cloud:
+      config:
+        enabled: true
+        uri: http://localhost:8081
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:peopleDB
+    username: sa
+    password: password
+
+  h2:
+    console:
+      enabled: true
+      path: /h2

@@ -3,10 +3,12 @@ server:
 spring:
   cloud:
     config:
-      git:
-        default-label: config-server
-        uri: https://github.com/ortegafran97/PeopleMicroservices
-        search-paths: config-data
+      server:
+        bootstrap: true
+        git:
+          default-label: config-server
+          uri: https://github.com/ortegafran97/PeopleMicroservices
+          search-paths: config-data
   application:
     name: config-service
 
