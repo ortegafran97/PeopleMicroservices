@@ -33,7 +33,7 @@ public class PeopleController {
     @PostMapping
     public ResponseEntity<People> save(@RequestBody People people){
         People peopleNew = peopleService.save(people);
-        if(peopleNew.equals(null))
+        if(peopleNew == null)
             return ResponseEntity.badRequest().build();
         return ResponseEntity.ok(peopleNew);
     }
