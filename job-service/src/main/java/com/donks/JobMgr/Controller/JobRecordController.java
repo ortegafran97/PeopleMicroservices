@@ -5,6 +5,7 @@ import com.donks.JobMgr.Service.JobRecordService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,9 +34,13 @@ public class JobRecordController {
         return ResponseEntity.ok(jobRecordService.findById(jobId));
     }
 
-    @GetMapping(value = "/byuser/{userId}")
-    public ResponseEntity<List<JobRecord>> findByUser(@PathVariable UUID userId){
-        return ResponseEntity.ok(jobRecordService.findByUserId(userId));
+    @GetMapping(value = "/byuser/{personId}")
+    public ResponseEntity<List<JobRecord>> findByUser(@PathVariable UUID personId){
+        List<JobRecord> list = jobRecordService.findByUserId(personId);
+        if(list == null)
+            return ResponseEntity.ok(List.of());
+
+        return ResponseEntity.ok(list);
     }
 
     @DeleteMapping(value = "/{jobId}")

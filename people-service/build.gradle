@@ -32,6 +32,9 @@ dependencies {
 
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-feign
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-feign', version: '1.4.7.RELEASE'
+
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'

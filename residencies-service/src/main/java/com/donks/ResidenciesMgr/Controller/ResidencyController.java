@@ -35,18 +35,20 @@ public class ResidencyController {
                 ResponseEntity.ok(residency.get());
     }
 
-    @GetMapping(value ="/byUser/{userId}")
-    public ResponseEntity<List<Residency>> findByUserId(@PathVariable("userId")UUID userId){
-        List<Residency> residencies = residencyService.findByUserId(userId);
-        return ResponseEntity.ok(residencies);
+    @GetMapping("/byuser/{userId}")
+    public ResponseEntity<Residency> findByUserId(@PathVariable("userId")UUID userId){
+        Residency residency = residencyService.findByUserId(userId);
+
+        if(residency == null)
+            return ResponseEntity.noContent().build();
+
+        return ResponseEntity.ok(residency);
     }
 
     @PostMapping
     public ResponseEntity<Residency> saveOne(@RequestBody Residency residency){
-
         Residency residencyNew = residencyService.addOne(residency);
-
-        if(residencyNew.equals(null))
+        if(residencyNew == null)
             return ResponseEntity.internalServerError().build();
 
         return ResponseEntity.ok(residencyNew);

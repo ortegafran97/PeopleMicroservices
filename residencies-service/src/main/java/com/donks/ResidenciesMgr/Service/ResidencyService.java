@@ -2,6 +2,7 @@ package com.donks.ResidenciesMgr.Service;
 
 import com.donks.ResidenciesMgr.Model.Residency;
 import com.donks.ResidenciesMgr.Repository.ResidencyRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,10 @@ public class ResidencyService {
     }
 
     public Residency addOne(Residency residency){
+        Residency old = residencyRepository.findByPersonid(residency.getPersonid());
+        if(old != null)
+            residencyRepository.deleteById(old.getId());
+
         return residencyRepository.save(residency);
     }
 
@@ -31,7 +36,7 @@ public class ResidencyService {
         return residencyRepository.findById(id).orElse(null);
     }
 
-    public Residency updateOne(Residency residency){
+    public Residency updateOne(@NotNull Residency residency){
         Optional<Residency> r = residencyRepository.findById(residency.getId());
 
         if(r.isEmpty()) return null;
@@ -44,9 +49,9 @@ public class ResidencyService {
         return residencyRepository.findById(id).isEmpty();
     }
 
-    public List<Residency> findByUserId(UUID userId){
-        List<Residency> residencies = residencyRepository.findByUserId(userId);
-        return residencies;
+    public Residency findByUserId(UUID userId){
+        Residency residency = residencyRepository.findByPersonid(userId);
+        return residency;
     }
 
 

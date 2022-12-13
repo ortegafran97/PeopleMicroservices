@@ -31,6 +31,6 @@ public class JobRecord {
     private LocalDateTime end;
 
     @Column(columnDefinition = "uuid")
-    private UUID userid;
+    private UUID personid;
 
 }

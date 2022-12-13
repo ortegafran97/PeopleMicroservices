@@ -25,7 +25,7 @@ public class JobRecordService {
     }
 
     public List<JobRecord> findByUserId(UUID userId){
-        return jobRecordRepository.findByUserid(userId);
+        return jobRecordRepository.findByPersonid(userId);
     }
 
     public Boolean deleteOne(UUID jobId){

@@ -11,8 +11,6 @@ public class PeopleServiceShould {
 
     @BeforeEach
     public void setUp(){
-        PeopleRepository peopleRepository = Mockito.mock(PeopleRepository.class);
-        peopleService = new PeopleService(peopleRepository);
     }
 
 
