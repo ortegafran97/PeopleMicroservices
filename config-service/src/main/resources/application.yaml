@@ -6,7 +6,7 @@ spring:
       server:
         bootstrap: true
         git:
-          default-label: config-server
+          default-label: gateway
           uri: https://github.com/ortegafran97/PeopleMicroservices
           search-paths: config-data
   application:
