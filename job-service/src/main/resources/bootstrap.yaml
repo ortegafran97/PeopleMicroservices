@@ -9,7 +9,7 @@ spring:
       uri: http://localhost:8081
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:peopleDB
+    url: jdbc:h2:mem:jobsDB
     username: sa
     password: password
 
