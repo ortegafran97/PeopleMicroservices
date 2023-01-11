@@ -25,12 +25,15 @@ public class PeopleController {
 
     @GetMapping
     public ResponseEntity<List<People>> getAll(){
+        logger.info("GET all people");
         return ResponseEntity.ok(peopleService.getAll());
     }
 
 
     @GetMapping("/{id}")
     public ResponseEntity<People> getById(@PathVariable("id") UUID id){
+        logger.info("GET People with id {}", id);
+
         People search = peopleService.getById(id);
 
         if(search == null)
@@ -41,6 +44,7 @@ public class PeopleController {
 
     @PostMapping
     public ResponseEntity<People> save(@RequestBody People people){
+        logger.info("POST People {}", people);
         People peopleNew = peopleService.save(people);
         if(peopleNew == null)
             return ResponseEntity.badRequest().build();
@@ -51,6 +55,7 @@ public class PeopleController {
 
     @GetMapping("/residency/byuser/{personId}")
     public ResponseEntity<Residency> getResidency(@PathVariable("personId") UUID personId){
+        logger.info("GET People Residency with id {}", personId);
         People people = peopleService.getById(personId);
 
         if(people == null) return ResponseEntity.notFound().build();
@@ -82,23 +87,24 @@ public class PeopleController {
 
     @GetMapping("/jobs/all")
     public ResponseEntity<List<JobRecord>> getAllJobs(){
+        logger.info("GET all jobs");
         return ResponseEntity.ok(peopleService.getAllJobs());
     }
 
     @GetMapping("/jobs/byuser/{personId}")
     public ResponseEntity<List<JobRecord>> getJobs(@PathVariable("personId") UUID personId){
+        logger.info("GET all jobs for person Id {}",personId);
+
         People people = peopleService.getById(personId);
-
         if(people == null) return ResponseEntity.noContent().build();
-
         List<JobRecord> jobRecordList = peopleService.getPersonJobs(personId);
-
-
         return ResponseEntity.ok(jobRecordList);
     }
 
     @PostMapping("/jobs/{idPerson}")
     public ResponseEntity<JobRecord> saveJob(@PathVariable("idPerson") UUID idPerson,@RequestBody JobRecord jobRecord){
+        logger.info("POST job for Person Id {}",idPerson);
+
         People person = peopleService.getById(idPerson);
         if(person == null)
             return ResponseEntity.notFound().build();
