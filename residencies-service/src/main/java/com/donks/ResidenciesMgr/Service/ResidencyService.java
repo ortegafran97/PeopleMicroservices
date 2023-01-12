@@ -2,7 +2,6 @@ package com.donks.ResidenciesMgr.Service;
 
 import com.donks.ResidenciesMgr.Model.Residency;
 import com.donks.ResidenciesMgr.Repository.ResidencyRepository;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +35,7 @@ public class ResidencyService {
         return residencyRepository.findById(id).orElse(null);
     }
 
-    public Residency updateOne(@NotNull Residency residency){
+    public Residency updateOne(Residency residency){
         Optional<Residency> r = residencyRepository.findById(residency.getId());
 
         if(r.isEmpty()) return null;

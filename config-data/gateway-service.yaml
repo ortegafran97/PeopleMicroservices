@@ -1,5 +1,6 @@
 server:
   port: 8080
+
 eureka:
   client:
     fetch-registry: true
@@ -15,16 +16,20 @@ spring:
       discovery:
         locator:
           enable: true
+#          lowerCaseServiceId: true
       routes:
-        - id: people-service
-          uri: lb://people-service
-          predicates: 
-            - Path=/user/**
-        - id: job-service
-          uri: lb://job-service
-          predicates: 
-            - Path=/jobs/**
-        - id: job-service
-          uri: lb://residency-service
-          predicates: 
-            - Path=/residency/**
+      - id: people-service
+        uri: lb://people-service/
+        predicates:
+          - Path=/people/**
+      - id: job-service
+        uri: lb://job-service/
+        predicates:
+          - Path=/jobs/**
+      - id: residencies-service
+        uri: lb://residencies-service/
+        predicates:
+          - Path=/residencies/**
+    discovery:
+      locator:
+        enable: true
