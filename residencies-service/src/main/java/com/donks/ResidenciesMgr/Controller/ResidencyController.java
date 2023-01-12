@@ -2,6 +2,8 @@ package com.donks.ResidenciesMgr.Controller;
 
 import com.donks.ResidenciesMgr.Model.Residency;
 import com.donks.ResidenciesMgr.Service.ResidencyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/residencies")
 public class ResidencyController {
+    Logger logger = LoggerFactory.getLogger(ResidencyController.class);
 
     @Autowired
     private final ResidencyService residencyService;
@@ -23,6 +26,7 @@ public class ResidencyController {
 
     @GetMapping
     public ResponseEntity<List<Residency>> findAll(){
+        logger.info("GET ALL residencies");
         return ResponseEntity.ok(residencyService.findAll());
     }
 

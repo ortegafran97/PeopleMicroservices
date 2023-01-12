@@ -16,7 +16,6 @@ spring:
       discovery:
         locator:
           enable: true
-#          lowerCaseServiceId: true
       routes:
       - id: people-service
         uri: lb://people-service/
