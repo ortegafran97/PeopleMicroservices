@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="People" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.donks.PeopleMgr.PeopleMgrApplication" />
+    <module name="com.donks.PeopleMgr.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.donks.PeopleMgr.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
