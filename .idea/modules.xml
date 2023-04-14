@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/JobMgr.main.iml" filepath="$PROJECT_DIR$/.idea/modules/JobMgr.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PeopleMgr.main.iml" filepath="$PROJECT_DIR$/.idea/modules/PeopleMgr.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PeopleMicroservices.iml" filepath="$PROJECT_DIR$/.idea/PeopleMicroservices.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ResidenciesMgr.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ResidenciesMgr.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.donks.JobMgr.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.donks.JobMgr.main.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/PeopleMicroservices.iml" filepath="$PROJECT_DIR$/.idea/PeopleMicroservices.iml" />
+>>>>>>> e99842d4d13a82b57f8a7f9ef2b806912225a45d
     </modules>
   </component>
 </project>
